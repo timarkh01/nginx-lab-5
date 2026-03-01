@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    
+
 <?php if (isset($_SESSION['username'])): ?>
     <p>Данные из сессии:</p>
     <ul>
@@ -43,6 +43,29 @@ $info = UserInfo::getInfo();
 ?>
 <h3>Информация о пользователе:</h3>
 <p>Данные успешно загружены (скрыто для приватности).</p>
+
+<?php
+require 'db.php';
+require 'Order.php';
+
+$order = new Order($pdo);
+$all = $order->getAll();
+?>
+
+<h2>Сохранённые данные:</h2>
+<ul>
+<?php foreach ($all as $row): ?>
+    <li>
+        <strong><?= htmlspecialchars($row['username']) ?></strong> |
+        Ресторан: <?= htmlspecialchars($row['restaurant']) ?> |
+        Блюд: <?= htmlspecialchars($row['count_order']) ?> |
+        Оплата онлайн: <?= $row['type_pay'] ? 'Да' : 'Нет' ?> |
+        Коробка: <?= $row['type_boxing'] === 'c' ? 'Карточная' : 'Пластиковая' ?>
+    </li>
+<?php endforeach; ?>
+</ul>
+
+<a href="form.html">Заполнить форму</a>
 
 </body>
 </html>
