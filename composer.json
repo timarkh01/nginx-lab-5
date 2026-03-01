@@ -1,0 +1,17 @@
+{
+    "name": "t/nginx-lab-4",
+    "autoload": {
+        "psr-4": {
+            "T\\NginxLab4\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "timarkh",
+            "email": "tima-arkh@list.ru"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.10"
+    }
+}

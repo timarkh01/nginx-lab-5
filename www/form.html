@@ -1,0 +1,61 @@
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      form {
+        width: 300px;
+        margin: 20px auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        opacity: 0;
+        transition: opacity 1s;
+      }
+      form.loaded {
+        opacity: 1;
+      }
+      input, select, button {
+        margin: 5px 0;
+        padding: 5px;
+      }
+      button {
+        background: #4caf50;
+        color: white;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myForm" action="process.php" method="POST">
+      <input type="text" name="username" placeholder="Введите имя" />
+       <div style="display: flex; align-items: center; margin: 5px 0;">
+        <span style="margin-right: 10px;">Ресторан:</span>
+        <select name="restaurant" style="flex-grow: 1;">
+            <option value="Чеснок">Чеснок</option>
+            <option value="Пеперанчино">Пеперанчино</option>
+            <option value="Ростикс">Ростикс</option>
+        </select>
+    </div>
+      <input type="text" name="count_order" placeholder="Введите количество блюд" />
+      <div class="checkbox-container">
+        <input type="checkbox" name="type_pay" id="type_pay" />
+        <label for="type_pay">Оплата онлайн</label>
+    </div>
+      <input type="radio" name="type_boxing" value="c" /> Картоная коробка<br />
+      <input type="radio" name="type_boxing" value="p" /> Платисковая коробка<br />
+      <button type="submit">Отправить</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+      window.onload = function () {
+        document.querySelector("form").classList.add("loaded");
+      };
+      document.getElementById("myForm").addEventListener("submit", function(e){
+    const username = document.querySelector("[name='username']").value;
+    alert("Вы ввели имя: " + username);
+        });
+    </script>
+  </body>
+</html>
